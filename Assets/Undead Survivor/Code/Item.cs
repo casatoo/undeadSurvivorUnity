@@ -46,15 +46,15 @@ public class Item : MonoBehaviour
                 break;
             case ItemData.ItemType.Glove:
             case ItemData.ItemType.Shoe:
-                    if(level == 0) {
-                        GameObject newGear = new GameObject();
-                        gear = newGear.AddComponent<Gear>();
-                        gear.Init(data);
-                    } else {
-                        float nextRate = data.damages[level];
-                        gear.LevelUp(nextRate);
-                    }
-                    level++;
+                if(level == 0) {
+                    GameObject newGear = new GameObject();
+                    gear = newGear.AddComponent<Gear>();
+                    gear.Init(data);
+                } else {
+                    float nextRate = data.damages[level];
+                    gear.LevelUp(nextRate);
+                }
+                level++;
                 break;
             case ItemData.ItemType.Heal:
                 GameManager.instance.health = GameManager.instance.maxHealth;
