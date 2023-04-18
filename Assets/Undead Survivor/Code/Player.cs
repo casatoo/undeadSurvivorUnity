@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     SpriteRenderer spriter; // spriteRenderer 객체
     Animator anim; // 에니메이터 객체
     public Scanner scanner;
-
+    public Hand[] hands;
 
     void Awake()
     {
@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         scanner = GetComponent<Scanner>();
+        hands = GetComponentsInChildren<Hand>(true);
     }
 
     // InputSystem 도입으로 주석 처리
