@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(!GameManager.instance.isLive)
+        return;
         // //힘을 준다
         // rigid.AddForce(inputVec);
 
@@ -50,12 +52,16 @@ public class Player : MonoBehaviour
     // vector2 타입의 값을 가져와서 set
     void OnMove(InputValue value)
     {
+        if(!GameManager.instance.isLive)
+        return;
         inputVec = value.Get<Vector2>();
     }
 
     // 업데이트 후 동작
     void LateUpdate()
     {
+        if(!GameManager.instance.isLive)
+        return;
         // 에니메이션 speed 변경
         anim.SetFloat("Speed",inputVec.magnitude);
 
