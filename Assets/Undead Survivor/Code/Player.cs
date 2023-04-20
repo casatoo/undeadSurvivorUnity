@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     Animator anim; // 에니메이터 객체
     public Scanner scanner;
     public Hand[] hands;
+    public RuntimeAnimatorController[] animCon;
 
     void Awake()
     {
@@ -21,6 +22,10 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         scanner = GetComponent<Scanner>();
         hands = GetComponentsInChildren<Hand>(true);
+    }
+
+    void OnEnable() {
+        anim.runtimeAnimatorController = animCon[GameManager.instance.playerId];
     }
 
     // InputSystem 도입으로 주석 처리

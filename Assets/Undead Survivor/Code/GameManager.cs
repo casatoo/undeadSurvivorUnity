@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public float gameTime;
     public float maxGameTime = 2 * 10f;
     [Header("#Player Info")]
+    public int playerId;
     public float health;
     public float maxHealth = 100;
     public int level;
@@ -29,11 +30,11 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    public void GameStart() {
+    public void GameStart(int id) {
+        playerId = id;
         health = maxHealth;
-
-        // 최초 무기 지급을 위한 임시 스크립트
-        uiLevelUp.Select(0);
+        player.gameObject.SetActive(true);
+        uiLevelUp.Select(playerId % 2);
         Remuse();
     }
 
